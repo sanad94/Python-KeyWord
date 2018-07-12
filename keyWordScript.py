@@ -254,7 +254,7 @@ if __name__ == "__main__":
     print str(count) + " tasks taked : " + str(datetime.timedelta(seconds=total_time)) + " avg time : " + str(datetime.timedelta(seconds=avg_time))
     
     if len(roll_back_task) > 0 : 
-        print "rollling back"
+        print colored("Rolling back" , "yellow")
 
     for roll in roll_back_task : 
       
