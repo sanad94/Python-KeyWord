@@ -19,6 +19,14 @@ job_key = "job-"
 delimiter = "-"
 roll_back_task = list() 
 
+def screen_inactive():
+    # disable screen setting to prevent blck screen 
+    os.system('xset s off -dpms')
+
+def screen_active(seconds = 5 * 60 ):
+    # enable screen setting to allow blck screen by default 5 min  
+    os.system('xset dpms ' + str(seconds) )
+
 def roll_back(path , keyword_file , job_file):
     
     current_dir = os.getcwd()
@@ -220,6 +228,7 @@ def run(resume_path,company_name,position_name,path,keyword_file,job_file):
 
 if __name__ == "__main__":
     
+    screen_inactive()
     start = time.time()
     resume_path = sys.argv[1]
     count = 0;
@@ -259,4 +268,5 @@ if __name__ == "__main__":
     for roll in roll_back_task : 
       
         roll_back(roll[0],roll[1],roll[2]) 
+    screen_active()
  
