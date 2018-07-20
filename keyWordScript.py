@@ -281,7 +281,14 @@ def arg_parser():
 
 if __name__ == "__main__":
 
-	var = arg_parser() 
-	print var[0] , var[1]
-	normal_task()
+	out = arg_parser() 
+	parser = out[0]
+	args = out[1]
+	if(args.Test == None):
+		normal_task()
+		sys.exit()  
+	if (args.Test == "True") and args.Resume == None or args.Job == None :
+	    	parser.error('The Test Flag requires the -Job,-j and -Resume,-r')
+	else : 
+		normal_task()
  
