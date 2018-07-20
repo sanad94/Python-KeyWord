@@ -270,9 +270,15 @@ def normal_task():
         roll_back(roll[0],roll[1],roll[2]) 
     screen_active()
 
+def testing_task(resume_path , job_path):
+    print "start testing task "
+    result = read_resume_job(resume_path,job_path)
+    driver = selinume_request(result[0],result[1])
+    print "!!!Done!!!"
+	
 def arg_parser():
     
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="script look in working directory for all txt file that have the following pattern (<job key-><firm name-><position title>).txt ex : job-sanadLtd-sw.txt \n run -> python keywordscript.py <resume> \n required <resume>")
     parser.add_argument( "-t","--Test",const='True' , nargs = '?',help="test resume to a specific job descreption")
     parser.add_argument("-r","--Resume",help="resume path")
     parser.add_argument("-j","--Job",help="Job path")
@@ -290,5 +296,4 @@ if __name__ == "__main__":
 	if (args.Test == "True") and args.Resume == None or args.Job == None :
 	    	parser.error('The Test Flag requires the -Job,-j and -Resume,-r')
 	else : 
-		normal_task()
- 
+		testing_task(args.Resume,args.Job)
