@@ -10,6 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import time
 import datetime 
+import argparse
 from termcolor import colored
 
 # global var 
@@ -269,7 +270,18 @@ def normal_task():
         roll_back(roll[0],roll[1],roll[2]) 
     screen_active()
 
+def arg_parser():
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument( "-t","--Test",const='True' , nargs = '?',help="test resume to a specific job descreption")
+    parser.add_argument("-r","--Resume",help="resume path")
+    parser.add_argument("-j","--Job",help="Job path")
+    args = parser.parse_args(sys.argv[2:])
+    return parser,args
+
 if __name__ == "__main__":
 
+	var = arg_parser() 
+	print var[0] , var[1]
 	normal_task()
  
