@@ -226,8 +226,7 @@ def run(resume_path,company_name,position_name,path,keyword_file,job_file):
     convert_to_pdf(new_resume_path)
     match_rate_writer(match_rate_before,match_rate_after,path,position_name)
 
-if __name__ == "__main__":
-    
+def normal_task():
     screen_inactive()
     start = time.time()
     resume_path = sys.argv[1]
@@ -269,4 +268,8 @@ if __name__ == "__main__":
       
         roll_back(roll[0],roll[1],roll[2]) 
     screen_active()
+
+if __name__ == "__main__":
+
+	normal_task()
  
